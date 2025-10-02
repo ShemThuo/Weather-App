@@ -17,11 +17,12 @@
             <input type="text" class="city-input" placeholder="Search City">
             <button class="search-btn">
                 <span class="material-symbols-outlined">
-                    search
+                    search 🔍
                 </span>
             </button>
         </header>
-        <section class="weather-info">
+
+        <section class="weather-info" style="display: none;">
             <div class="location-date-container">
                 <div class="location">
                     <span class="material-symbols-outlined">
@@ -82,6 +83,26 @@
                     <img src="assets/weather/thunderstorm.svg" alt="Thunder" class="forecast-item-img">
                     <h5 class="forecast-item-temp">20 &deg;C</h5>
                 </div>
+            </div>
+        </section>
+
+        <section class="search-city section-message">
+            <img src="assets/message/search-city.png" class="message-img">
+            <div>
+                <h1>Search City</h1>
+                <h4 class="regular-txt">
+                    Find out the weather condition of the city
+                </h4>
+            </div>
+        </section>
+
+        <section class="not-found section-message" style="display: none;">
+            <img src="assets/message/not-found.png" class="not-found">
+            <div>
+                <h1>Search City</h1>
+                <h4 class="regular-txt">
+                    Find out the weather condition of the city
+                </h4>
             </div>
         </section>
     </main>
