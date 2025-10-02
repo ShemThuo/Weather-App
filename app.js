@@ -1,6 +1,12 @@
 const cityInput = document.querySelector('.city-input')
 const searchBtn= document.querySelector('.search-btn')
 
+const weatherInfoSection = document.querySelector('.weather-info')
+const notFoundSection = document.querySelector('.not-found')
+const searchCitySection = document.querySelector('.search-city')
+
+const apiKey = '2e97c6660082adbd62c9093be371bd94'  //Video=30:15
+
 searchBtn.addEventListener('click', () => {
     if (cityInput.value.trim() != '') {
         updateWeatherInfo(cityInput.value)
@@ -16,10 +22,22 @@ cityInput.addEventListener('keydown', (event) => {
     }
 })
 
-function getFetchData() {
-    //Video=28:10
+async function getFetchData(endPoint, city) {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/${endPoint}?q=${city}&appid=${apiKey}&units=metric`
+    const response = await fetch(apiUrl)
+    return response.json()
 }
 
-function updateWeatherInfo(city) {
-    const weatherDate = getFetchData()
+async function updateWeatherInfo(city) {
+    const weatherData = await getFetchData('weather', city)
+    if (weatherData.cod != 200) {
+        showDisplaySection(notFoundSection)
+        return        
+    } 
 }
+
+function showDisplaySection(section) {
+
+}
+
+//Video=34:44
