@@ -5,7 +5,15 @@ const weatherInfoSection = document.querySelector('.weather-info')
 const notFoundSection = document.querySelector('.not-found')
 const searchCitySection = document.querySelector('.search-city')
 
-const apiKey = '2e97c6660082adbd62c9093be371bd94'  //Video=30:15
+const countryTxt = document.querySelector('.country-txt')
+const tempTxt = document.querySelector('.temp-txt')
+const conditionTxt = document.querySelector('.condition-txt')
+const humidityValueTxt = document.querySelector('.humidity-value-txt')
+const windValueTxt = document.querySelector('.wind-value.txt')
+const weatherSummaryImg = document.querySelector('.weather-summary-img')
+const currentDateTxt = document.querySelector('.current-date-txt') //Video=38:49
+
+const apiKey = '2e97c6662c9093be371bd94'  //Video=30:15
 
 searchBtn.addEventListener('click', () => {
     if (cityInput.value.trim() != '') {
@@ -34,10 +42,21 @@ async function updateWeatherInfo(city) {
         showDisplaySection(notFoundSection)
         return        
     } 
+    console.log(weatherData)
+
+    const {
+        name: country,
+        main: temp, humidity,
+        weather: [{id, main}],
+        wind: {speed}
+    } = weatherData
+
+    showDisplaySection(weatherInfoSection)
 }
 
 function showDisplaySection(section) {
-
+    [weatherInfoSection, searchCitySection, notFoundSection]
+        .forEach(section => section.style.display = 'none')
+    
+    section.style.display = 'flex'
 }
-
-//Video=34:44
