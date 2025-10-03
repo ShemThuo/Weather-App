@@ -11,9 +11,12 @@ const conditionTxt = document.querySelector('.condition-txt')
 const humidityValueTxt = document.querySelector('.humidity-value-txt')
 const windValueTxt = document.querySelector('.wind-value.txt')
 const weatherSummaryImg = document.querySelector('.weather-summary-img')
-const currentDateTxt = document.querySelector('.current-date-txt') //Video=38:49
+const currentDateTxt = document.querySelector('.current-date-txt')
 
-const apiKey = '2e97c6662c9093be371bd94'  //Video=30:15
+require('dotenv').config();
+
+const apiKey = process.env.API_KEY; //Video=30:15
+console.log("My API key:", apiKey);
 
 searchBtn.addEventListener('click', () => {
     if (cityInput.value.trim() != '') {
@@ -50,6 +53,8 @@ async function updateWeatherInfo(city) {
         weather: [{id, main}],
         wind: {speed}
     } = weatherData
+
+    countryTxt.textContent = country
 
     showDisplaySection(weatherInfoSection)
 }
